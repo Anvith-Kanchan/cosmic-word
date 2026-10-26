@@ -109,7 +109,7 @@ main { width: min(100% - 32px, 1000px); margin: 0 auto; }
 .game-result[hidden] { display: none; }
 .game-result { min-height: 18px; margin: 12px 0 0; text-align: center; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .09em; }
 .reset-note { margin: 8px 0 0; text-align: center; color: var(--muted); font-size: 11px; }
-.ad-game { margin-top: 44px; }
+.ad-game { margin-top: 180px; }
 .how-section { max-width: 880px; margin: 26px auto 0; padding: 20px 0 30px; border-top: 1px solid var(--border); scroll-margin-top: 14px; }
 .section-heading { text-align: center; }
 .section-heading h2 { margin: 8px 0 22px; font-size: 24px; letter-spacing: -.3px; }
@@ -182,6 +182,7 @@ body.high-contrast { --correct: #f5793a; --present: #85c0f9; }
   .lede { max-width: 440px; font-size: 13px; }
   .microcopy { font-size: 9px; }
   .ad-slot { margin: 22px auto 30px; }
+  .ad-game { margin-top: 180px; }
   .ad-inner:not(.ad-inner-gpt) { min-height: 60px; padding: 8px 10px; }
   .ad-note { max-width: 55%; font-size: 10px; }
   .game-section { max-width: 100%; }
