@@ -25,7 +25,7 @@ Open `index.html` directly in a browser, or run a static server from this folder
 - `assets/favicon.svg` — favicon
 - `netlify.toml` — Netlify headers and static configuration
 
-The two ad spaces use Google's documented Google Publisher Tag test ad unit (`/6355419/Travel/Europe/France/Paris`) at 300 × 250. This requests generic test creatives, not live commercial ads. The placement mapping suppresses requests below 320 px viewport width and hides a slot if Google returns no creative or the GPT script fails to load. The privacy policy describes the test integration. Before switching to commercial ads, configure authorized ad inventory and update the disclosure accordingly.
+The two ad spaces use Google's documented Google Publisher Tag test ad unit (`/6355419/Travel/Europe/France/Paris`) at 300 × 250. This requests generic test creatives, not live commercial ads. The placement mapping suppresses requests below 320 px viewport width, defers below-the-fold loading, and hides a slot if Google returns no creative or the GPT script fails to load. The AdSense publisher script (`ca-pub-3481499158566740`) is also in the homepage head for site connection/review; no production AdSense ad-unit code has been added. Keep the test slots until Google completes the site review. Before activating live ads, add official AdSense unit code or intentionally configure Auto ads and keep the privacy disclosure accurate.
 
 ## Daily puzzle and styling
 
