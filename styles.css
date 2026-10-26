@@ -10,6 +10,9 @@
   --present: #c9b458;
   --absent: #787c7e;
   --tile-bg: #ffffff;
+  --accent: #1a1a1b;
+  --accent-hover: #343436;
+  --accent-text: #ffffff;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -46,10 +49,10 @@ main { width: min(100% - 32px, 1000px); margin: 0 auto; }
 .lede { max-width: 520px; margin: 0 auto; color: var(--muted); font-size: 15px; }
 .primary-button {
   min-height: 44px; margin-top: 20px; padding: 10px 18px;
-  border: 0; border-radius: 4px; background: #1a1a1b; color: #fff;
+  border: 0; border-radius: 4px; background: var(--accent); color: var(--accent-text);
   font-size: 14px; font-weight: 700;
 }
-.primary-button:hover { background: #343436; }
+.primary-button:hover { background: var(--accent-hover); }
 .microcopy { margin: 14px 0 0; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .09em; }
 .microcopy span { margin: 0 7px; }
 .ad-slot { max-width: 728px; margin: 24px auto 36px; }
@@ -65,7 +68,9 @@ main { width: min(100% - 32px, 1000px); margin: 0 auto; }
 .mission-line { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .1em; }
 .clue-panel { max-width: 580px; margin: 20px auto 16px; text-align: center; }
 .clue-meta { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .1em; }
+.clue-meta span:first-child { color: var(--correct); }
 .clue-meta span + span { padding-left: 12px; border-left: 1px solid var(--border); }
+.reset-note span { color: var(--present); font-weight: 700; }
 .clue-panel h2 { margin: 8px 0 0; font-size: clamp(16px, 2.7vw, 20px); font-weight: 650; line-height: 1.35; }
 .board { display: grid; margin: 0 auto; }
 .tile {
@@ -152,6 +157,7 @@ body.dark {
   --bg: #121213; --surface: #1a1a1b; --text: #f8f8f8; --muted: #818384;
   --border: #3a3a3c; --key: #818384; --correct: #538d4e; --present: #b59f3b;
   --absent: #3a3a3c; --tile-bg: #121213;
+  --accent: #538d4e; --accent-hover: #447842; --accent-text: #ffffff;
 }
 body.high-contrast { --correct: #f5793a; --present: #85c0f9; }
 @media (max-width: 650px) {
