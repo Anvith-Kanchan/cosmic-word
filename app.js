@@ -271,7 +271,15 @@
     });
   }
 
-  function checkRollover() {
+function configureAdSlots() {
+    document.querySelectorAll(".ad-slot").forEach(slot => {
+      if (slot.dataset.demoSlot === "true") return;
+      const providerElement = slot.querySelector("ins.adsbygoogle, [data-ad-provider], iframe");
+      if (!providerElement) slot.hidden = true;
+    });
+  }
+
+    function checkRollover() {
     const nextDay = utcDayIndex();
     if (nextDay === day) return;
     day = nextDay;
@@ -355,6 +363,7 @@
 
   updateHeader();
   loadSettings();
+  configureAdSlots();
   render();
   updateStats();
   updateCountdown();
