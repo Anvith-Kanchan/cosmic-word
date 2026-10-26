@@ -25,3 +25,14 @@ Open `index.html` directly in a browser, or run a static server from this folder
 - `netlify.toml` — Netlify headers and static configuration
 
 Advertising areas are placeholders only. Add a provider's approved ad code only after completing its publisher requirements and updating the Privacy page.
+
+## Daily puzzle and styling
+
+- The pool contains 152 unique clue/answer pairs. Answer lengths vary from 3 to 10 letters; six attempts are available for every answer.
+- The daily sequence starts on 26 October 2026 and advances at midnight UTC. All visitors receive the same clue for each UTC date. The pool cycles after all clues have been used.
+- The default theme uses the familiar Wordle feedback colors: green `#6aaa64`, yellow `#c9b458`, and gray `#787c7e`, with a plain white background and system fonts.
+- Game progress, guesses, streaks and settings are stored in the browser's local storage.
+
+## Advertising placeholders
+
+The two `ad-slot` sections are demo placeholders. To add a real provider, replace the inner placeholder with the provider's approved ad element and set `data-demo-slot="false"` on the surrounding slot. The app hides a non-demo slot automatically if it has no ad element, avoiding an empty blank region. Update `privacy.html` to describe the real provider and data practices before serving ads. Never click your own live ads or ask visitors to click them.
