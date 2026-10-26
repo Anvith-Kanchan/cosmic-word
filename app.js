@@ -168,17 +168,16 @@
       });
     }
     applyKeyboardStatuses();
-    if (state.over) {
-      $("gameHint").textContent = state.won
+    const result = $("gameResult");
+    result.hidden = !state.over;
+    result.textContent = state.over
+      ? (state.won
         ? `SOLVED IN ${state.guesses.length} ${state.guesses.length === 1 ? "GUESS" : "GUESSES"}.`
-        : `NO GUESSES LEFT · ANSWER: ${answer}`;
-    } else {
-      $("gameHint").textContent = "TYPE A GUESS · PRESS ENTER TO SUBMIT";
-    }
+        : `NO GUESSES LEFT · ANSWER: ${answer}`)
+      : "";
   }
 
   function showToast(message) {
-    $("gameHint").textContent = message;
     $("toast").textContent = message;
     $("toast").classList.add("show");
     clearTimeout(toastTimer);
@@ -314,12 +313,14 @@ function configureAdSlots() {
   $("statsButton").addEventListener("click", () => { updateStats(); openDialog("statsDialog"); });
   $("settingsButton").addEventListener("click", () => openDialog("settingsDialog"));
   $("launchButton").addEventListener("click", () => {
-    $("game").scrollIntoView({ behavior: "smooth", block: "start" });
-    setTimeout(() => {
-      const firstKey = $("keyboard").querySelector(".key");
-      if (firstKey) firstKey.focus({ preventScroll: true });
-    }, 250);
+    $("how").scrollIntoView({ behavior: "smooth", block: "start" });
   });
+
+  function syncBrowserTheme(isDark) {
+    document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) themeMeta.content = isDark ? "#121213" : "#ffffff";
+  }
 
   function loadSettings() {
     let settings = null;
@@ -333,13 +334,13 @@ function configureAdSlots() {
     $("contrastToggle").checked = Boolean(settings.contrast);
     document.body.classList.toggle("dark", Boolean(settings.dark));
     document.body.classList.toggle("high-contrast", Boolean(settings.contrast));
-    document.documentElement.style.colorScheme = settings.dark ? "dark" : "light";
+    syncBrowserTheme(settings.dark);
   }
   $("saveSettings").addEventListener("click", () => {
     const settings = { version: 2, dark: $("darkToggle").checked, contrast: $("contrastToggle").checked };
     document.body.classList.toggle("dark", settings.dark);
     document.body.classList.toggle("high-contrast", settings.contrast);
-    document.documentElement.style.colorScheme = settings.dark ? "dark" : "light";
+    syncBrowserTheme(settings.dark);
     try { localStorage.setItem("cosmic-word-settings", JSON.stringify(settings)); } catch {}
     $("settingsDialog").close();
   });
@@ -369,6 +370,7 @@ function configureAdSlots() {
   window.addEventListener("focus", checkRollover);
   window.addEventListener("pageshow", checkRollover);
 
+  $("year").textContent = String(new Date().getUTCFullYear());
   updateHeader();
   loadSettings();
   configureAdSlots();
