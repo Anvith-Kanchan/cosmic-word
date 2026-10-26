@@ -95,10 +95,11 @@ main { width: min(100% - 32px, 1000px); margin: 0 auto; }
 .key:hover { filter: brightness(.96); }
 .key.wide { flex: 1.5; font-size: 10px; }
 .key.correct, .key.present, .key.absent { color: #fff; }
-.game-hint { min-height: 18px; margin: 12px 0 0; text-align: center; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .09em; }
+.game-result[hidden] { display: none; }
+.game-result { min-height: 18px; margin: 12px 0 0; text-align: center; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .09em; }
 .reset-note { margin: 8px 0 0; text-align: center; color: var(--muted); font-size: 11px; }
 .ad-game { margin-top: 44px; }
-.how-section { max-width: 880px; margin: 46px auto 0; padding-top: 26px; border-top: 1px solid var(--border); }
+.how-section { max-width: 880px; margin: 26px auto 0; padding-top: 20px; border-top: 1px solid var(--border); scroll-margin-top: 14px; }
 .section-heading { text-align: center; }
 .section-heading h2 { margin: 8px 0 22px; font-size: 24px; letter-spacing: -.3px; }
 .instruction-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
