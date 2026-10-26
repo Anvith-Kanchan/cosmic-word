@@ -324,8 +324,11 @@ function configureAdSlots() {
   function loadSettings() {
     let settings = null;
     try { settings = JSON.parse(localStorage.getItem("cosmic-word-settings") || "null"); } catch {}
-    // Night mode is the default for new visitors; keep an explicit saved preference.
-    if (!settings || typeof settings.dark !== "boolean") settings = { dark: true, contrast: false };
+    // Ignore pre-versioned settings from the old light-default release; night mode is now the default.
+    if (!settings || settings.version !== 2 || typeof settings.dark !== "boolean") {
+      settings = { version: 2, dark: true, contrast: false };
+      try { localStorage.setItem("cosmic-word-settings", JSON.stringify(settings)); } catch {}
+    }
     $("darkToggle").checked = Boolean(settings.dark);
     $("contrastToggle").checked = Boolean(settings.contrast);
     document.body.classList.toggle("dark", Boolean(settings.dark));
@@ -333,7 +336,7 @@ function configureAdSlots() {
     document.documentElement.style.colorScheme = settings.dark ? "dark" : "light";
   }
   $("saveSettings").addEventListener("click", () => {
-    const settings = { dark: $("darkToggle").checked, contrast: $("contrastToggle").checked };
+    const settings = { version: 2, dark: $("darkToggle").checked, contrast: $("contrastToggle").checked };
     document.body.classList.toggle("dark", settings.dark);
     document.body.classList.toggle("high-contrast", settings.contrast);
     document.documentElement.style.colorScheme = settings.dark ? "dark" : "light";
