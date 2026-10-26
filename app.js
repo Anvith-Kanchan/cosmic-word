@@ -273,14 +273,6 @@
     });
   }
 
-function configureAdSlots() {
-    document.querySelectorAll(".ad-slot").forEach(slot => {
-      if (slot.dataset.demoSlot === "true") return;
-      const providerElement = slot.querySelector("ins.adsbygoogle, [data-ad-provider], iframe");
-      if (!providerElement) slot.hidden = true;
-    });
-  }
-
     function checkRollover() {
     const nextDay = utcDayIndex();
     if (nextDay === day) return;
@@ -373,7 +365,6 @@ function configureAdSlots() {
   $("year").textContent = String(new Date().getUTCFullYear());
   updateHeader();
   loadSettings();
-  configureAdSlots();
   render();
   updateStats();
   updateCountdown();

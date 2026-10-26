@@ -37,7 +37,6 @@ Open `index.html` directly in a browser, or run a static server from this folder
 - `about.html`, `privacy.html` — site information pages
 - `404.html` — branded not-found page for Cloudflare Pages
 - `_headers` — Cloudflare Pages headers
-- `ads.js` — Google Publisher Tag test ad setup
 - `assets/favicon.svg` — favicon
 - `netlify.toml` — Netlify-only headers and static configuration
 
@@ -48,14 +47,24 @@ Open `index.html` directly in a browser, or run a static server from this folder
 - Dark mode is the default, with the familiar Wordle-style feedback palette; players can switch to the light theme in Settings. The site uses system fonts and a restrained, flat layout.
 - Game progress, guesses, streaks and settings are stored in the browser's local storage.
 
-## Advertising status
+## Adsterra banner integration (pending approval)
 
-The two ad spaces currently use Google's documented Google Publisher Tag test ad unit (`/6355419/Travel/Europe/France/Paris`) at 300 × 250. These are generic **test creatives**, not live commercial ads. The placement mapping suppresses requests below 320 px viewport width, defers below-the-fold loading, and hides a slot if Google returns no creative or the GPT script fails to load.
+The homepage now reserves one hidden 300 × 250 banner location above “How to Play.” Google Publisher Tag test creatives have been removed so they are not mistaken for live ads. The reserved slot remains hidden and makes no Adsterra requests until a real approved unit is supplied.
 
-The AdSense publisher script and `google-adsense-account` meta tag use publisher ID `ca-pub-3481499915866740`; root `ads.txt` lists that publisher. Production AdSense ad units have not been configured. Do not mistake test creatives or the publisher script for approval to serve live ads.
+To activate Adsterra:
+1. Register as a publisher at [Adsterra](https://beta.publishers.adsterra.com/).
+2. Add the full HTTPS Cloudflare Pages URL to Websites and select the relevant category. Keep BOOST CPM off to avoid explicitly allowing all ad types.
+3. Request the classic **Banner** format, size 300 × 250. Wait for the website/unit to show as approved.
+4. From the Adsterra dashboard, choose **Get code** and copy the exact approved banner script. Adsterra's guide says to paste banner code in the HTML page body, not the `<head>`.
+5. In `index.html`, replace the comment inside `#adsterra-banner-300x250` with that exact script and remove the `hidden` attribute from `#ad-hero-wrapper`. Commit these together. Do not change the generated provider URL, key, or script attributes.
+6. Test on desktop and mobile and check for unexpected redirects, popups, inappropriate creatives, broken layout, and console errors. Remove the script if it harms the experience.
+7. Add any `ads.txt` seller records only if Adsterra supplies or directs you to add them; do not invent seller IDs. Update this privacy policy with the actual integration and any applicable consent requirements before turning on live ads.
 
-To add another real provider, use the exact tag supplied by that provider, test it on desktop and mobile, add the provider's authorized seller record to `ads.txt` if required, and update `privacy.html` for its data practices and any applicable consent requirements before enabling the live tag. Do not enable popunders, forced redirects, or ads that obstruct gameplay. Never click your own live ads or ask visitors to click them.
+Only one banner is reserved initially. Adsterra recommends one banner of each size per page, so don't add a second 300 × 250 unit without confirming it with their support team. No live Adsterra ad code is present yet; website approval and the dashboard-generated unit are prerequisites.
+
+Official references: [publisher dashboard and website approval](https://adsterra.com/blog/set-up-publishers-dashboard/), [banner size and integration instructions](https://adsterra.com/blog/how-banner-ads-make-money/).
+
 
 ## AdSense site verification
 
-The publisher script and `google-adsense-account` meta tag are installed in the `<head>` of the HTML pages for site verification using publisher ID `ca-pub-3481499915866740`. Root `ads.txt` also lists this publisher. Once the chosen deployment URL is live, verify the site in AdSense using the matching verification method and wait for Google's review; the homepage continues to use GPT test creatives until live ad units are intentionally configured.
+The publisher script and `google-adsense-account` meta tag are installed in the `<head>` of the HTML pages for site verification using publisher ID `ca-pub-3481499915866740`. Root `ads.txt` also lists this publisher. Once the chosen deployment URL is live, verify the site in AdSense using the matching verification method and wait for Google's review; the homepage reserves a hidden Adsterra banner slot but serves no live Adsterra ads until the site and banner unit are approved and their code is deliberately installed.
