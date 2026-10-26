@@ -54,6 +54,16 @@
 
     if (!activeSlots.length) return;
 
+    // Fetch the below-the-fold placement shortly before it enters view rather than
+    // requesting both creatives immediately on every page load.
+    googletag.setConfig({
+      lazyLoad: {
+        fetchMarginPercent: 100,
+        renderMarginPercent: 50,
+        mobileScaling: 2
+      }
+    });
+
     googletag.pubads().addEventListener("slotRenderEnded", event => {
       const placement = activeSlots.find(item => item.id === event.slot.getSlotElementId());
       if (!placement) return;
