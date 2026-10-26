@@ -53,6 +53,7 @@ main { width: min(100% - 32px, 1000px); margin: 0 auto; }
 .microcopy { margin: 14px 0 0; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .09em; }
 .microcopy span { margin: 0 7px; }
 .ad-slot { max-width: 728px; margin: 24px auto 36px; }
+.ad-slot[hidden] { display: none !important; }
 .ad-label { margin-bottom: 5px; text-align: center; color: var(--muted); font-size: 9px; letter-spacing: .1em; }
 .ad-inner {
   min-height: 90px; display: flex; align-items: center; justify-content: space-between;
