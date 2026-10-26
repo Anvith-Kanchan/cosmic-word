@@ -62,16 +62,11 @@ main { width: min(100% - 32px, 1000px); margin: 0 auto; }
   min-height: 90px; display: flex; align-items: center; justify-content: space-between;
   gap: 12px; padding: 12px 16px; border: 1px dashed var(--border); background: var(--surface);
 }
-.ad-inner-gpt {
-  width: 100%; min-height: 250px; display: flex;
-  align-items: center; justify-content: center;
-  padding: 0; border: 0; background: transparent;
+.ad-inner-banner {
+  width: 300px; max-width: 100%; min-height: 250px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto; padding: 0; border: 0; background: transparent;
 }
-.gpt-ad {
-  display: block; flex: 0 0 300px;
-  width: 300px; height: 250px; margin: 0 auto !important;
-}
-.gpt-ad > iframe { display: block !important; margin-inline: auto !important; }
 @media (max-width: 319px) {
   .ad-slot { display: none !important; }
 }
@@ -109,7 +104,6 @@ main { width: min(100% - 32px, 1000px); margin: 0 auto; }
 .game-result[hidden] { display: none; }
 .game-result { min-height: 18px; margin: 12px 0 0; text-align: center; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .09em; }
 .reset-note { margin: 8px 0 0; text-align: center; color: var(--muted); font-size: 11px; }
-.ad-game { margin-top: 180px; }
 .how-section { max-width: 880px; margin: 26px auto 0; padding: 20px 0 30px; border-top: 1px solid var(--border); scroll-margin-top: 14px; }
 .section-heading { text-align: center; }
 .section-heading h2 { margin: 8px 0 22px; font-size: 24px; letter-spacing: -.3px; }
@@ -182,8 +176,7 @@ body.high-contrast { --correct: #f5793a; --present: #85c0f9; }
   .lede { max-width: 440px; font-size: 13px; }
   .microcopy { font-size: 9px; }
   .ad-slot { margin: 22px auto 30px; }
-  .ad-game { margin-top: 180px; }
-  .ad-inner:not(.ad-inner-gpt) { min-height: 60px; padding: 8px 10px; }
+  .ad-inner:not(.ad-inner-banner) { min-height: 60px; padding: 8px 10px; }
   .ad-note { max-width: 55%; font-size: 10px; }
   .game-section { max-width: 100%; }
   .clue-panel { margin: 16px auto; }

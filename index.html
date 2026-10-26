@@ -7,18 +7,6 @@
 <meta name="theme-color" content="#121213">
 <meta name="description" content="A daily astronomy word puzzle. Solve today's clue in six tries.">
 <title>Cosmic Word — Daily Astronomy Puzzle</title>
-<script>
-window.googletag = window.googletag || { cmd: [] };
-window.__cosmicGptUnavailable = false;
-window.addEventListener("error", function (event) {
-  if (event.target instanceof HTMLScriptElement &&
-      event.target.src === "https://securepubads.g.doubleclick.net/tag/js/gpt.js") {
-    window.__cosmicGptUnavailable = true;
-    document.querySelectorAll(".ad-slot").forEach(function (slot) { slot.hidden = true; });
-  }
-}, true);
-</script>
-<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" crossorigin="anonymous"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3481499915866740" crossorigin="anonymous"></script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
@@ -41,10 +29,11 @@ window.addEventListener("error", function (event) {
     <p class="microcopy">NEW PUZZLE AT MIDNIGHT UTC <span>·</span> NO ACCOUNT NEEDED</p>
   </section>
 
-  <div class="ad-slot ad-hero" id="ad-hero-wrapper" aria-label="Advertisement">
-    <div class="ad-label">ADVERTISEMENT · TEST CREATIVE</div>
-    <div class="ad-inner ad-inner-gpt">
-      <div id="gpt-ad-hero" class="gpt-ad" data-ad-provider="gpt-test" aria-label="Google Publisher Tag test advertisement"></div>
+  <!-- Hidden until Adsterra approves the site and supplies a real banner unit. -->
+  <div class="ad-slot ad-hero adsterra-banner" id="ad-hero-wrapper" aria-label="Advertisement" hidden>
+    <div class="ad-label">ADVERTISEMENT</div>
+    <div class="ad-inner ad-inner-banner" id="adsterra-banner-300x250">
+      <!-- Paste the approved Adsterra 300x250 Banner code here exactly as supplied. Keep it in the body, not the head. -->
     </div>
   </div>
 
@@ -77,13 +66,6 @@ window.addEventListener("error", function (event) {
     <p class="game-result" id="gameResult" role="status" hidden></p>
     <p class="reset-note">Next puzzle in <span id="countdown">--:--:--</span> (UTC)</p>
   </section>
-
-  <div class="ad-slot ad-game" id="ad-game-wrapper" aria-label="Advertisement">
-    <div class="ad-label">ADVERTISEMENT · TEST CREATIVE</div>
-    <div class="ad-inner ad-inner-gpt">
-      <div id="gpt-ad-game" class="gpt-ad" data-ad-provider="gpt-test" aria-label="Google Publisher Tag test advertisement"></div>
-    </div>
-  </div>
 
   <section class="curiosity">
     <p class="eyebrow">ABOUT THE PUZZLE</p>
@@ -138,7 +120,6 @@ window.addEventListener("error", function (event) {
   </form>
 </dialog>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
-<script src="ads.js"></script>
 <script src="words.js"></script>
 <script src="app.js"></script>
 </body>
