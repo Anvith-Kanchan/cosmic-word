@@ -54,16 +54,19 @@
   }
 
   function updateBoardDimensions() {
+    // Keep the board compact: short answers use modest tiles and long answers shrink to fit.
     const viewport = window.innerWidth || 360;
     const gap = viewport <= 450 ? 4 : 6;
-    const available = Math.max(220, Math.min(620, viewport - 36));
-    const tileSize = Math.max(20, Math.floor((available - (answer.length - 1) * gap) / answer.length));
+    const maxBoardWidth = Math.min(360, Math.max(250, viewport - (viewport <= 450 ? 28 : 48)));
+    const maxTileSize = 54;
+    const tileSize = Math.max(24, Math.min(maxTileSize,
+      Math.floor((maxBoardWidth - (answer.length - 1) * gap) / answer.length)));
     const width = tileSize * answer.length + (answer.length - 1) * gap;
     const board = $("board");
     board.style.width = `${width}px`;
     board.style.gridTemplateColumns = `repeat(${answer.length}, ${tileSize}px)`;
     board.style.gap = `${gap}px`;
-    board.style.setProperty("--tile-font", `${Math.max(11, Math.min(26, Math.floor(tileSize * 0.48)))}px`);
+    board.style.setProperty("--tile-font", `${Math.max(12, Math.min(25, Math.floor(tileSize * 0.48)))}px`);
   }
 
   function buildBoard() {
@@ -319,8 +322,10 @@ function configureAdSlots() {
   });
 
   function loadSettings() {
-    let settings = {};
-    try { settings = JSON.parse(localStorage.getItem("cosmic-word-settings") || "{}"); } catch {}
+    let settings = null;
+    try { settings = JSON.parse(localStorage.getItem("cosmic-word-settings") || "null"); } catch {}
+    // Night mode is the default for new visitors; keep an explicit saved preference.
+    if (!settings || typeof settings.dark !== "boolean") settings = { dark: true, contrast: false };
     $("darkToggle").checked = Boolean(settings.dark);
     $("contrastToggle").checked = Boolean(settings.contrast);
     document.body.classList.toggle("dark", Boolean(settings.dark));
