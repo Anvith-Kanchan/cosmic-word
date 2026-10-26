@@ -50,7 +50,7 @@
     $("puzzleQuestion").textContent = puzzle.question;
     $("puzzleLength").textContent = `${answer.length} LETTER${answer.length === 1 ? "" : "S"}`;
     $("board").setAttribute("aria-label", `${ROWS} guesses, ${answer.length} letters each`);
-    $("wordCount").textContent = `${PUZZLES.length} curated clues`;
+    $("wordCount").textContent = String(PUZZLES.length);
   }
 
   function updateBoardDimensions() {
