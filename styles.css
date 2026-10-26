@@ -67,6 +67,14 @@ main { width: min(100% - 32px, 1000px); margin: 0 auto; }
   display: flex; align-items: center; justify-content: center;
   margin: 0 auto; padding: 0; border: 0; background: transparent;
 }
+.ad-native { max-width: 880px; margin: 20px auto 30px; }
+.ad-inner-native {
+  display: block; width: 100%; min-height: 0;
+  padding: 0; border: 0; background: transparent;
+}
+.ad-inner-native #container-de8188ea1f72de11d89957d0cc34f97f {
+  width: 100%; max-width: 100%;
+}
 @media (max-width: 319px) {
   .ad-slot { display: none !important; }
 }
