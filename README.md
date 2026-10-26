@@ -37,3 +37,8 @@ The two ad spaces use Google's documented Google Publisher Tag test ad unit (`/6
 ## Advertising placeholders
 
 The two `ad-slot` sections are demo placeholders. To add a real provider, replace the inner placeholder with the provider's approved ad element and set `data-demo-slot="false"` on the surrounding slot. The app hides a non-demo slot automatically if it has no ad element, avoiding an empty blank region. Update `privacy.html` to describe the real provider and data practices before serving ads. Never click your own live ads or ask visitors to click them.
+
+
+## AdSense site verification
+
+The publisher script and `google-adsense-account` meta tag are installed in the `<head>` of all HTML pages for site verification using publisher ID `ca-pub-3481499158566740`. Root `ads.txt` also lists this publisher. The production ad units have not yet been configured; the homepage continues to use Google Publisher Tag test creatives. In AdSense, select the matching verification method after the deployment is live, then click Verify and Request review.
