@@ -21,10 +21,11 @@ Open `index.html` directly in a browser, or run a static server from this folder
 - `app.js` — gameplay and daily rotation
 - `words.js` — 152 clue-answer pairs and a broader allowed-guess vocabulary
 - `about.html`, `privacy.html` — site information pages
+- `ads.js` — Google Publisher Tag test ad setup
 - `assets/favicon.svg` — favicon
 - `netlify.toml` — Netlify headers and static configuration
 
-Advertising areas are placeholders only. Add a provider's approved ad code only after completing its publisher requirements and updating the Privacy page.
+The two ad spaces use Google's documented Google Publisher Tag test ad unit (`/6355419/Travel/Europe/France/Paris`) at 300 × 250. This requests generic test creatives, not live commercial ads. The placement mapping suppresses requests below 320 px viewport width and hides a slot if Google returns no creative or the GPT script fails to load. The privacy policy describes the test integration. Before switching to commercial ads, configure authorized ad inventory and update the disclosure accordingly.
 
 ## Daily puzzle and styling
 
