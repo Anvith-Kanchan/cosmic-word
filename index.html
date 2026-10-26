@@ -1,48 +1,126 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#080d19">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="A daily astronomy word puzzle. Solve today's clue in six tries.">
 <title>Cosmic Word — Daily Astronomy Puzzle</title>
-<meta name="description" content="Solve a five-letter astronomy word in six tries. A new cosmic puzzle every day.">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header class="topbar">
-  <button class="icon-button" id="helpButton" aria-label="How to play">?</button>
-  <a class="brand" href="./"><span class="brand-star">✦</span><span><strong>COSMIC WORD</strong><small>YOUR DAILY SIGNAL FROM THE UNIVERSE</small></span></a>
-  <nav class="header-actions"><button class="icon-button" id="statsButton" aria-label="Statistics">▥</button><button class="icon-button" id="settingsButton" aria-label="Settings">⚙</button></nav>
+  <button class="icon-button" id="helpButton" aria-label="How to play" title="How to play">?</button>
+  <a class="brand" href="./" aria-label="Cosmic Word home">COSMIC WORD</a>
+  <nav class="header-actions" aria-label="Game options">
+    <button class="icon-button" id="statsButton" aria-label="Statistics" title="Statistics">▥</button>
+    <button class="icon-button" id="settingsButton" aria-label="Settings" title="Settings">⚙</button>
+  </nav>
 </header>
 <main>
-<section class="hero" id="home">
-  <p class="eyebrow"><i></i> MISSION OF THE DAY <span id="todayDate"></span></p>
-  <h1>A universe of words.<br><span>One mystery each day.</span></h1>
-  <p class="lede">Find the five-letter astronomy word in six tries. Every guess brings you closer to the stars.</p>
-  <button class="primary-button" id="launchButton">Launch today's puzzle <span>↗</span></button>
-  <p class="microcopy">✧ NEW PUZZLE EVERY 24 HOURS <span>✧ NO ACCOUNT NEEDED</span></p>
-</section>
-<div class="ad-slot ad-hero" aria-label="Advertisement"><div class="ad-label">ADVERTISEMENT</div><div class="ad-inner"><span class="ad-icon">◇</span><div><strong>Your ad could orbit here</strong><p>Reserved display placement · responsive 728 × 90 / mobile adaptation</p></div><small>DEMO SLOT</small></div></div>
-<section class="game-section" id="game">
-  <div class="mission-line"><span><i></i> DAILY TRANSMISSION</span><span id="missionNumber">MISSION 001</span></div>
-  <div class="board" id="board" role="grid" aria-label="Six attempts, five letters"></div>
-  <div class="keyboard" id="keyboard" aria-label="On-screen keyboard"></div>
-  <p class="game-hint" id="gameHint" aria-live="polite">TYPE A GUESS · PRESS ENTER TO TRANSMIT</p>
-</section>
-<div class="ad-slot ad-game" aria-label="Advertisement"><div class="ad-label">ADVERTISEMENT</div><div class="ad-inner"><span class="ad-icon">✧</span><div><strong>Make this space yours</strong><p>Secondary responsive ad placement · hidden or collapsed when empty in production</p></div><small>DEMO SLOT</small></div></div>
-<section class="how-section" id="how">
-  <div class="section-heading"><p class="eyebrow">HOW TO PLAY</p><h2>Read the signals.</h2></div>
-  <div class="instruction-cards">
-    <article class="instruction-card"><div class="example"><b class="correct">S</b><b>T</b><b>A</b></div><h3>Six attempts</h3><p>Guess the hidden five-letter word in six tries.</p></article>
-    <article class="instruction-card"><div class="example"><b class="present">O</b><b>R</b><b>B</b></div><h3>Follow the clues</h3><p>Gold means the letter exists, but is in another spot.</p></article>
-    <article class="instruction-card"><div class="example"><b class="absent">M</b><b class="absent">A</b><b class="absent">R</b></div><h3>Find the pattern</h3><p>Slate means the letter isn't in today's answer.</p></article>
+  <section class="hero" id="home">
+    <p class="eyebrow" id="todayDate">DAILY PUZZLE</p>
+    <h1>One clue. One word. Every day.</h1>
+    <p class="lede">A small daily puzzle about the planets, stars, and everything beyond.</p>
+    <button class="primary-button" id="launchButton">Play today's puzzle</button>
+    <p class="microcopy">NEW PUZZLE AT MIDNIGHT UTC <span>·</span> NO ACCOUNT NEEDED</p>
+  </section>
+
+  <div class="ad-slot ad-hero" aria-label="Advertisement">
+    <div class="ad-label">ADVERTISEMENT</div>
+    <div class="ad-inner"><span class="ad-placeholder">Ad space</span><span class="ad-note">Responsive display placement · demo only</span></div>
   </div>
-</section>
-<section class="curiosity"><div class="orbit-art">✦</div><div><p class="eyebrow">A LITTLE COSMIC CURIOSITY</p><h2>Stay curious, star traveler.</h2><p>From planets and moons to nebulae and distant galaxies, each daily word is inspired by the universe we keep exploring.</p></div><div class="word-count"><strong id="wordCount">200+</strong><small>ASTRONOMY WORDS<br>IN OUR ORBIT</small></div></section>
+
+  <section class="game-section" id="game" aria-label="Daily word puzzle">
+    <div class="mission-line"><span>DAILY PUZZLE</span><span id="missionNumber">PUZZLE 001</span></div>
+    <div class="clue-panel">
+      <div class="clue-meta"><span id="puzzleTopic">ASTRONOMY</span><span id="puzzleLength">4 LETTERS</span></div>
+      <h2 id="puzzleQuestion">Loading today's clue…</h2>
+    </div>
+    <div class="board" id="board" role="grid" aria-label="Guess grid"></div>
+    <div class="keyboard" id="keyboard" aria-label="On-screen keyboard"></div>
+    <p class="game-hint" id="gameHint" aria-live="polite">TYPE A GUESS · PRESS ENTER TO SUBMIT</p>
+    <p class="reset-note">Next puzzle in <span id="countdown">--:--:--</span> (UTC)</p>
+  </section>
+
+  <div class="ad-slot ad-game" aria-label="Advertisement">
+    <div class="ad-label">ADVERTISEMENT</div>
+    <div class="ad-inner"><span class="ad-placeholder">Ad space</span><span class="ad-note">Secondary responsive placement · demo only</span></div>
+  </div>
+
+  <section class="how-section" id="how">
+    <div class="section-heading"><p class="eyebrow">HOW TO PLAY</p><h2>Read the clues.</h2></div>
+    <div class="instruction-cards">
+      <article class="instruction-card">
+        <div class="example"><b class="example-green">A</b><b>B</b><b>C</b></div>
+        <h3>Six guesses</h3><p>Answer the daily clue in six tries. The number of tiles matches the answer.</p>
+      </article>
+      <article class="instruction-card">
+        <div class="example"><b class="example-yellow">O</b><b>R</b><b>B</b></div>
+        <h3>Use the feedback</h3><p>Yellow means the letter is in the answer, but in another position.</p>
+      </article>
+      <article class="instruction-card">
+        <div class="example"><b class="example-gray">S</b><b class="example-gray">K</b><b class="example-gray">Y</b></div>
+        <h3>Find the word</h3><p>Gray means the letter does not appear in the answer. Green means it's in the right place.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="curiosity">
+    <p class="eyebrow">ABOUT THE PUZZLE</p>
+    <h2>Keep looking up.</h2>
+    <p>New clues draw from a growing pool of real astronomy terms, missions, celestial objects, and space science.</p>
+    <p class="word-count"><strong id="wordCount">150+</strong> possible daily puzzles</p>
+  </section>
 </main>
-<footer><div class="footer-brand">✦ COSMIC WORD</div><p>An independent astronomy word game. Not affiliated with The New York Times or its Wordle game.</p><nav><a href="#how">How to play</a><a href="privacy.html">Privacy</a><a href="about.html">About</a></nav><small>© <span id="year"></span> Cosmic Word · Keep looking up.</small></footer>
-<dialog id="helpDialog" class="modal"><form method="dialog"><button class="close-button" aria-label="Close">×</button><p class="eyebrow">FIELD MANUAL</p><h2>How to play</h2><p>Find the hidden five-letter astronomy word in six attempts. Each guess must be a valid five-letter word.</p><p><b class="inline-correct">Green</b> means the letter is correct and in the right place. <b class="inline-present">Gold</b> means it belongs in another position. <b class="inline-absent">Slate</b> means it is not in the answer.</p><p>A fresh puzzle begins at midnight UTC each day.</p><button class="primary-button">Understood</button></form></dialog>
-<dialog id="statsDialog" class="modal"><form method="dialog"><button class="close-button" aria-label="Close">×</button><p class="eyebrow">MISSION RECORD</p><h2>Transmission statistics</h2><div class="stats-grid"><div><strong id="played">0</strong><small>PLAYED</small></div><div><strong id="winRate">0%</strong><small>WIN RATE</small></div><div><strong id="streak">0</strong><small>CURRENT STREAK</small></div><div><strong id="bestStreak">0</strong><small>BEST STREAK</small></div></div><h3>Guess distribution</h3><div id="distribution" class="distribution"></div><button class="primary-button" id="shareButton" type="button">Share results ↗</button><p class="status" id="shareStatus" aria-live="polite"></p><button class="secondary-button">Close</button></form></dialog>
-<dialog id="settingsDialog" class="modal"><form method="dialog"><button class="close-button" aria-label="Close">×</button><p class="eyebrow">PREFERENCES</p><h2>Settings</h2><label class="setting"><span>High contrast colors</span><input type="checkbox" id="contrastToggle"></label><label class="setting"><span>Dark theme</span><input type="checkbox" id="darkToggle" checked></label><button class="primary-button">Save settings</button></form></dialog>
+
+<footer>
+  <div class="footer-brand">COSMIC WORD</div>
+  <p>An independent astronomy word game, not affiliated with The New York Times or Wordle.</p>
+  <nav><a href="#how">How to play</a><a href="privacy.html">Privacy</a><a href="about.html">About</a></nav>
+  <small>© <span id="year"></span> Cosmic Word</small>
+</footer>
+
+<dialog id="helpDialog" class="modal">
+  <form method="dialog">
+    <button class="close-button" aria-label="Close">×</button>
+    <p class="eyebrow">HOW TO PLAY</p><h2>Find today's word</h2>
+    <p>Read the astronomy clue above the grid. Enter a valid word with the same number of letters as the answer. You have six guesses.</p>
+    <p><b class="inline-correct">Green</b> means the letter is correct and in the right place. <b class="inline-present">Yellow</b> means the letter belongs elsewhere. <b class="inline-absent">Gray</b> means the letter is not in the answer.</p>
+    <p>A new clue and answer arrive at midnight UTC. Your progress is saved in this browser.</p>
+    <button class="primary-button">Got it</button>
+  </form>
+</dialog>
+
+<dialog id="statsDialog" class="modal">
+  <form method="dialog">
+    <button class="close-button" aria-label="Close">×</button>
+    <p class="eyebrow">YOUR RECORD</p><h2>Statistics</h2>
+    <div class="stats-grid">
+      <div><strong id="played">0</strong><small>PLAYED</small></div>
+      <div><strong id="winRate">0%</strong><small>WIN RATE</small></div>
+      <div><strong id="streak">0</strong><small>STREAK</small></div>
+      <div><strong id="bestStreak">0</strong><small>BEST STREAK</small></div>
+    </div>
+    <h3>Guess distribution</h3><div id="distribution" class="distribution"></div>
+    <button class="primary-button" id="shareButton" type="button">Share results</button>
+    <p class="status" id="shareStatus" aria-live="polite"></p>
+    <button class="secondary-button">Close</button>
+  </form>
+</dialog>
+
+<dialog id="settingsDialog" class="modal">
+  <form method="dialog">
+    <button class="close-button" aria-label="Close">×</button>
+    <p class="eyebrow">PREFERENCES</p><h2>Settings</h2>
+    <label class="setting"><span>Dark theme</span><input type="checkbox" id="darkToggle"></label>
+    <label class="setting"><span>High-contrast tiles</span><input type="checkbox" id="contrastToggle"></label>
+    <button class="primary-button" id="saveSettings" type="button">Save settings</button>
+  </form>
+</dialog>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
-<script src="words.js"></script><script src="app.js"></script>
-</body></html>
+<script src="words.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
