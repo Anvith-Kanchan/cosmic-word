@@ -23,8 +23,26 @@
     <p class="eyebrow" id="todayDate">DAILY PUZZLE</p>
     <h1>One clue. One word. Every day.</h1>
     <p class="lede">A small daily puzzle about the planets, stars, and everything beyond.</p>
-    <button class="primary-button" id="launchButton">Play today's puzzle</button>
+    <button class="primary-button" id="launchButton">See how to play</button>
     <p class="microcopy">NEW PUZZLE AT MIDNIGHT UTC <span>·</span> NO ACCOUNT NEEDED</p>
+  </section>
+
+  <section class="how-section" id="how" aria-labelledby="howTitle">
+    <div class="section-heading"><p class="eyebrow">HOW TO PLAY</p><h2 id="howTitle">Three steps to a guess.</h2></div>
+    <div class="instruction-cards">
+      <article class="instruction-card">
+        <div class="example" role="img" aria-label="Six attempts, numbered one through six"><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b></div>
+        <h3>Six guesses</h3><p>You have six attempts. Answers range from 3 to 10 letters; the tile count shows the length for today's answer.</p>
+      </article>
+      <article class="instruction-card">
+        <div class="example" role="img" aria-label="Three example letter tiles"><b>A</b><b>S</b><b>T</b></div>
+        <h3>Match the length</h3><p>Enter a valid word with exactly the same number of letters as the answer, then press Enter to submit.</p>
+      </article>
+      <article class="instruction-card">
+        <div class="example" role="img" aria-label="Green, yellow and gray feedback tiles"><b class="example-green">A</b><b class="example-yellow">R</b><b class="example-gray">S</b></div>
+        <h3>Read the colors</h3><p>Green is the right letter in the right place. Yellow is in the answer but in another place. Gray is not in the answer.</p>
+      </article>
+    </div>
   </section>
 
   <div class="ad-slot ad-hero" data-demo-slot="true" aria-label="Advertisement">
@@ -40,7 +58,7 @@
     </div>
     <div class="board" id="board" role="grid" aria-label="Guess grid"></div>
     <div class="keyboard" id="keyboard" aria-label="On-screen keyboard"></div>
-    <p class="game-hint" id="gameHint" aria-live="polite">TYPE A GUESS · PRESS ENTER TO SUBMIT</p>
+    <p class="game-result" id="gameResult" role="status" hidden></p>
     <p class="reset-note">Next puzzle in <span id="countdown">--:--:--</span> (UTC)</p>
   </section>
 
@@ -48,24 +66,6 @@
     <div class="ad-label">ADVERTISEMENT</div>
     <div class="ad-inner"><span class="ad-placeholder">Ad space</span><span class="ad-note">Secondary responsive placement · demo only</span></div>
   </div>
-
-  <section class="how-section" id="how">
-    <div class="section-heading"><p class="eyebrow">HOW TO PLAY</p><h2>Read the clues.</h2></div>
-    <div class="instruction-cards">
-      <article class="instruction-card">
-        <div class="example"><b class="example-green">A</b><b>B</b><b>C</b></div>
-        <h3>Six guesses</h3><p>Answer the daily clue in six tries. The number of tiles matches the answer.</p>
-      </article>
-      <article class="instruction-card">
-        <div class="example"><b class="example-yellow">O</b><b>R</b><b>B</b></div>
-        <h3>Use the feedback</h3><p>Yellow means the letter is in the answer, but in another position.</p>
-      </article>
-      <article class="instruction-card">
-        <div class="example"><b class="example-gray">S</b><b class="example-gray">K</b><b class="example-gray">Y</b></div>
-        <h3>Find the word</h3><p>Gray means the letter does not appear in the answer. Green means it's in the right place.</p>
-      </article>
-    </div>
-  </section>
 
   <section class="curiosity">
     <p class="eyebrow">ABOUT THE PUZZLE</p>
@@ -86,7 +86,7 @@
   <form method="dialog">
     <button class="close-button" aria-label="Close">×</button>
     <p class="eyebrow">HOW TO PLAY</p><h2>Find today's word</h2>
-    <p>Read the astronomy clue above the grid. Enter a valid word with the same number of letters as the answer. You have six guesses.</p>
+    <p>Read the astronomy clue and match the letter count shown above the grid. Answers range from 3 to 10 letters. Enter a valid word of that length; you have six guesses.</p>
     <p><b class="inline-correct">Green</b> means the letter is correct and in the right place. <b class="inline-present">Yellow</b> means the letter belongs elsewhere. <b class="inline-absent">Gray</b> means the letter is not in the answer.</p>
     <p>A new clue and answer arrive at midnight UTC. Your progress is saved in this browser.</p>
     <button class="primary-button">Got it</button>
