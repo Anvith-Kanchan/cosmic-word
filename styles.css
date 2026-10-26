@@ -55,15 +55,21 @@ main { width: min(100% - 32px, 1000px); margin: 0 auto; }
 .primary-button:hover { background: var(--accent-hover); }
 .microcopy { margin: 14px 0 0; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .09em; }
 .microcopy span { margin: 0 7px; }
-.ad-slot { max-width: 728px; margin: 24px auto 36px; }
+.ad-slot { width: 100%; max-width: 728px; margin: 24px auto 36px; }
 .ad-slot[hidden] { display: none !important; }
 .ad-label { margin-bottom: 5px; text-align: center; color: var(--muted); font-size: 9px; letter-spacing: .1em; }
 .ad-inner {
   min-height: 90px; display: flex; align-items: center; justify-content: space-between;
   gap: 12px; padding: 12px 16px; border: 1px dashed var(--border); background: var(--surface);
 }
-.ad-placeholder { color: var(--muted); font-size: 12px; }
-.ad-note { color: var(--muted); font-size: 11px; text-align: right; }
+.ad-inner-gpt {
+  min-height: 250px; display: grid; place-items: center;
+  padding: 0; border: 0; background: transparent;
+}
+.gpt-ad { width: 300px; height: 250px; margin: 0 auto; }
+@media (max-width: 319px) {
+  .ad-slot { display: none !important; }
+}
 .game-section { max-width: 620px; margin: 0 auto; scroll-margin-top: 12px; }
 .mission-line { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .1em; }
 .clue-panel { max-width: 580px; margin: 20px auto 16px; text-align: center; }
@@ -171,7 +177,7 @@ body.high-contrast { --correct: #f5793a; --present: #85c0f9; }
   .lede { max-width: 440px; font-size: 13px; }
   .microcopy { font-size: 9px; }
   .ad-slot { margin: 22px auto 30px; }
-  .ad-inner { min-height: 60px; padding: 8px 10px; }
+  .ad-inner:not(.ad-inner-gpt) { min-height: 60px; padding: 8px 10px; }
   .ad-note { max-width: 55%; font-size: 10px; }
   .game-section { max-width: 100%; }
   .clue-panel { margin: 16px auto; }
