@@ -16,7 +16,7 @@ Open `index.html` directly in a browser, or run a static server from this folder
 
 ## Project files
 
-- `index.html` — landing page, game board, help, settings, statistics, ad placeholders
+- `index.html` — landing page, pre-game instructions, game board, help, settings, statistics, ad placeholders
 - `styles.css` — responsive styles
 - `app.js` — gameplay and daily rotation
 - `words.js` — 152 clue-answer pairs and a broader allowed-guess vocabulary
@@ -30,7 +30,7 @@ Advertising areas are placeholders only. Add a provider's approved ad code only 
 
 - The pool contains 152 unique clue/answer pairs. Answer lengths vary from 3 to 10 letters; six attempts are available for every answer.
 - The daily sequence starts on 26 October 2026 and advances at midnight UTC. All visitors receive the same clue for each UTC date. The pool cycles after all clues have been used.
-- The default theme uses the familiar Wordle feedback colors: green `#6aaa64`, yellow `#c9b458`, and gray `#787c7e`, with a plain white background and system fonts.
+- Dark mode is the default, with the familiar Wordle-style feedback palette; players can switch to the light theme in Settings. The site uses system fonts and a restrained, flat layout.
 - Game progress, guesses, streaks and settings are stored in the browser's local storage.
 
 ## Advertising placeholders
