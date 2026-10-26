@@ -8,7 +8,7 @@ This repository is a plain static website. It needs no framework, package instal
 
 1. In the [Cloudflare dashboard](https://dash.cloudflare.com/), open **Workers & Pages → Create → Pages → Connect to Git**.
 2. Authorize GitHub if prompted and select `Anvith-Kanchan/cosmic-word`.
-3. Select the `cloudflare-pages` branch as the production branch for the first deployment. This branch contains the Cloudflare preparation changes while keeping `main` unchanged; after validating the new site, the changes can be merged into `main`.
+3. Select `main` as the production branch. The Cloudflare preparation changes are already on `main`; no merge is needed for this deployment.
 4. Use these settings:
    - Framework preset: **None**
    - Root directory: leave at the repository root/default
@@ -18,11 +18,11 @@ This repository is a plain static website. It needs no framework, package instal
 
 Cloudflare Pages' Git integration publishes commits from the production branch and can create previews for other branches. Choose Git integration rather than Direct Upload for this workflow; Cloudflare says a Git-integrated Pages project cannot later be switched to Direct Upload. See the [Git integration guide](https://developers.cloudflare.com/pages/configuration/git-integration/) and [static HTML guide](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/).
 
-The root `_headers` file carries over the site's custom security headers and asset-cache rule. The root `404.html` gives unknown routes a real not-found page; Cloudflare Pages otherwise assumes SPA behavior when there is no top-level `404.html`.
+The root `_headers` file sets custom security headers. Cloudflare Pages supplies its own caching defaults, so this project does not force a long browser cache on non-versioned files. The root `404.html` gives unknown routes a real not-found page; Cloudflare Pages otherwise assumes SPA behavior when there is no top-level `404.html`.
 
 ## Existing Netlify deployment
 
-The current `astrodle.netlify.app` deployment is kept separate while Cloudflare is tested. `netlify.toml` and `netlify/README.md` remain for the existing Netlify setup; Cloudflare Pages does not use `netlify.toml`. Keep the Netlify site available until gameplay, static pages, ads and mobile behavior have been checked on Pages.
+The current `astrodle.netlify.app` deployment is kept separate while Cloudflare is tested. `netlify.toml` and `netlify/README.md` remain for the existing Netlify setup; Cloudflare Pages does not use `netlify.toml`. Keep the Netlify site available until gameplay, static pages, ads and mobile behavior have been checked on Pages. The migration commit uses Netlify's documented `[skip netlify]` marker for that commit only; a later commit without the marker can trigger another Netlify deployment. Keep this in mind while Netlify is still connected, and disable/disconnect its Git deployment only after Cloudflare is verified.
 
 ## Local preview
 

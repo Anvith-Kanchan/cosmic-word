@@ -5,7 +5,7 @@
 - [ ] Sign in to the [Cloudflare dashboard](https://dash.cloudflare.com/).
 - [ ] Open **Workers & Pages → Create → Pages → Connect to Git**.
 - [ ] Authorize the Cloudflare GitHub app and select `Anvith-Kanchan/cosmic-word`.
-- [ ] Select production branch `cloudflare-pages` (not `main` for the initial test).
+- [ ] Select production branch `main`.
 - [ ] Set Framework preset to **None**.
 - [ ] Leave Root directory at the repository root/default.
 - [ ] Leave Build command blank.
