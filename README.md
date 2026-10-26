@@ -1,6 +1,6 @@
 # Cosmic Word
 
-An astronomy-themed daily five-letter word puzzle.
+An astronomy-themed daily word puzzle with variable-length answers (3–10 letters), clue prompts, and six guesses per puzzle. The curated pool contains 152 clue-answer pairs.
 
 ## Deploy to Netlify
 
@@ -19,7 +19,7 @@ Open `index.html` directly in a browser, or run a static server from this folder
 - `index.html` — landing page, game board, help, settings, statistics, ad placeholders
 - `styles.css` — responsive styles
 - `app.js` — gameplay and daily rotation
-- `words.js` — answer and allowed-word pools
+- `words.js` — 152 clue-answer pairs and a broader allowed-guess vocabulary
 - `about.html`, `privacy.html` — site information pages
 - `assets/favicon.svg` — favicon
 - `netlify.toml` — Netlify headers and static configuration
